@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -29,9 +31,23 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<!-- Hybrid server deployment configuration -->
 				<configuration>
 					<classifier>mule-application</classifier>
+					<armDeployment>
+						<applicationName>customer-orders-poc</applicationName>
+						<muleVersion>${app.runtime}</muleVersion>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<target>uhg-poc-server-dev</target>
+						<targetType>server</targetType>
+						<connectedAppClientId>c4bd61107b974ecbb24db80eef306525</connectedAppClientId>
+						<connectedAppClientSecret>AD2c0Ff8220048A38E3847d94296F205</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<environment>dev</environment>
+						<businessGroupId>519535b5-aa0c-4f03-b3bd-a34c0cf4e29f</businessGroupId>
+					</armDeployment>
 				</configuration>
+				<!-- <configuration> <classifier>mule-application</classifier> </configuration> -->
 			</plugin>
 		</plugins>
 	</build>
@@ -54,6 +70,13 @@
 			<artifactId>mule-apikit-module</artifactId>
 			<version>1.10.4</version>
 			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.hybrid</groupId>
+			<artifactId>hybrid-domain</artifactId>
+			<version>0.0.1</version>
+			<classifier>mule-domain</classifier>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -81,6 +104,10 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>mule-public</id>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
 
