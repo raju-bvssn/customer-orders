@@ -127,6 +127,7 @@ output application/json
         </error-handler>
     </flow>
     <flow name="get:\orders:customer-orders-sapi-config">
+		<logger level="INFO" doc:name="Logger" doc:id="5fb79de4-5429-4dfa-880e-9c31f677fc8d" message="*** Start of get records ****"/>
 		<http:request method="GET" doc:name="Request" doc:id="e7e14e11-6b78-4e9a-923b-d9767365d4c7" config-ref="HTTP_Request_configuration" path="/objects" />
     </flow>
     <flow name="post:\orders:customer-orders-sapi-config">
