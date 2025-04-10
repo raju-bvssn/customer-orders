@@ -71,13 +71,13 @@
 			<version>1.10.4</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.hybrid</groupId>
 			<artifactId>hybrid-domain</artifactId>
 			<version>0.0.1</version>
 			<classifier>mule-domain</classifier>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<repositories>
